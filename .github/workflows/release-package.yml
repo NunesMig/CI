@@ -31,8 +31,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-          asset_path: ./package.json
-          asset_name: package-v${{ github.run_number }}.json
+          asset_path: .
+          asset_name: package-v${{ github.run_number }}.zip
           asset_content_type: application/zip
   publish-gpr:
     needs: release
