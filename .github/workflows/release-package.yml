@@ -1,8 +1,6 @@
 name: Node.js Package
 
-on:
-  release:
-    types: [created]
+on: push
 
 jobs:
   build:
@@ -13,10 +11,18 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm test
-  
-  publish-gpr:
+      - run: npm test 
+  release: 
+    name: Release Project
+    runs-on: ubuntu-latest
     needs: build
+    steps:
+      - name: Create Github release
+        uses: actions/create-release@v1
+          env:
+            GITHUB_TOKEN: $ {{ secrets.GITHUB_TOKEN }}
+  publish-gpr:
+    needs: release
     runs-on: ubuntu-latest
     permissions:
       packages: write
