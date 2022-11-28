@@ -82,7 +82,6 @@ jobs:
     - name: Test service URLs
       run: |
         minikube service list
-        kubectl expose rc example --type=NodePort
         minikube service example --url
         echo "------------------opening the service------------------"
         curl $(minikube service example --url)        
