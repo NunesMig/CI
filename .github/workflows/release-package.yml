@@ -85,3 +85,4 @@ jobs:
        kubectl create deployment example --image=hub.docker.com/repository/docker/nunesmig/cidemo:latest
        kubectl expose deployment example --type=LoadBalancer --port=8080
        kubectl get svc
+       kubectl -- get pods
