@@ -15,7 +15,7 @@ spec:
             containers:
                 - name: example-api
                   imagePullPolicy: Never
-                  image: local/example:latest
+                  image: hub.docker.com/repository/docker/nunesmig/cidemo:latest
                   resources:
                       limits:
                           cpu: 50m
