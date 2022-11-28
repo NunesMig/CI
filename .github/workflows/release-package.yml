@@ -81,7 +81,8 @@ jobs:
         kubectl apply -f deploy-to-minikube.yml
     - name: Test service URLs
       run: |
-        minikube service list
-        minikube service example --url
-        echo "------------------opening the service------------------"
-        curl $(minikube service example --url)        
+        kubectl create deployment web --image=hub.docker.com/repository/docker/nunesmig/cidemo:latest
+        kubectl expose deployment web --type=NodePort --port=8080
+        kubectl get service web
+        minikube service web --url
+        curl $(minikube service web --url)
